@@ -5,13 +5,21 @@
   <h2>Live Ngrok App URL:</h2>
   <p id="url">Loading...</p>
 
-	<script>
-  fetch('url.txt')
-    .then(response => response.text())
-    .then(url => {
-      document.getElementById('url').innerHTML = `<a href="${url}" target="_blank">${url}</a>`;
-    });
-	</script>
+  <script>
+    fetch('url.txt')
+      .then(response => response.text())
+      .then(text => {
+        const match = text.match(/(https?:\/\/[^\s]+)\s*(\[.*\])?/);
+        if (match) {
+          const link = match[1];
+          const status = match[2] || '';
+          document.getElementById('url').innerHTML = `<a href="${link}" target="_blank">${link}</a> ${status}`;
+        } else {
+          document.getElementById('url').textContent = text;
+        }
+      });
+  </script>
+  
 
 </body>
 </html>
