@@ -5,12 +5,13 @@
   <h2>Live Ngrok App URL:</h2>
   <p id="url">Loading...</p>
 
-  <script>
-    fetch('https://raw.githubusercontent.com/Alnasser0/usyd-ngrok-url/main/url.txt')
-      .then(response => response.text())
-      .then(url => {
-        document.getElementById('url').innerHTML = `<a href="${url}" target="_blank">${url}</a>`;
-      });
-  </script>
+	<script>
+  fetch('url.txt')
+    .then(response => response.text())
+    .then(url => {
+      document.getElementById('url').innerHTML = `<a href="${url}" target="_blank">${url}</a>`;
+    });
+	</script>
+
 </body>
 </html>
